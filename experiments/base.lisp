@@ -7,7 +7,7 @@
 (defun init-all ()
   (unless *initd*
     (unless cepl.context:*gl-context*
-      (cepl:repl))
+      (cepl:repl 800 800 3.1))
     (setf *ui-root* (pile:make-root-element))
     (gl:clear-color 0.109 0.188 0.243 0s0)
     (skitter:listen-to (lambda (x y z) (system-listener x y z))
@@ -16,7 +16,7 @@
 
 (defparameter *some-val* 10)
 (defparameter *another-val* 10)
-(defparameter *some-color* (v! 28 45 62 1))
+(defparameter *some-color* (v! 28 45 64 1))
 
 (defvar *test-int* 0)
 
@@ -101,3 +101,6 @@
 (defun system-listener (event timestamp tpref)
   (declare (ignore event timestamp tpref))
   (stop-loop))
+
+(defun main ()
+  (run-loop 100000))
